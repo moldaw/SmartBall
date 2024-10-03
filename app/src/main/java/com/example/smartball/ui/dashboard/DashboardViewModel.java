@@ -10,7 +10,7 @@ public class DashboardViewModel extends ViewModel {
 
     public DashboardViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Tässä on etusivu");
+        mText.setValue("Tässä on hoitohistoria");
     }
 
     public LiveData<String> getText() {

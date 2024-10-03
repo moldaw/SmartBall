@@ -10,7 +10,7 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Tässä on hoitohistoria");
+        mText.setValue("Tässä on etusivu");
     }
 
     public LiveData<String> getText() {

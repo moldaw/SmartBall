@@ -1,16 +1,16 @@
-package com.example.smartball.ui.dashboard;
+package com.example.smartball.ui.settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class SettingsViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Tässä on hoitohistoria");
+        mText.setValue("Tässä on asetukset");
     }
 
     public LiveData<String> getText() {

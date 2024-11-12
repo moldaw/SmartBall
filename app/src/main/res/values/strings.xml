@@ -1,6 +1,19 @@
 <resources>
-    <string name="app_name">SmartBall</string>
-    <string name="title_home">Etusivu</string>
+    <string name="app_name">SmartBall Companion App</string>
+    <string name="title_home">Hoidon määritys</string>
     <string name="title_dashboard">Historia</string>
     <string name="title_notifications">Asetukset</string>
+
+    <string-array name="area_options">
+        <item>Selkä</item>
+        <item>Käsi</item>
+        <item>Jalka</item>
+    </string-array>
+
+    <string-array name="time_options">
+        <item>5 min</item>
+        <item>10 min</item>
+        <item>15 min</item>
+        <item>20 min</item>
+    </string-array>
 </resources>

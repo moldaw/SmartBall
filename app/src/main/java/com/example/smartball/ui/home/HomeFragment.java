@@ -5,14 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.smartball.DatabaseHelper;
 import com.example.smartball.R;
 import com.example.smartball.databinding.FragmentHomeBinding;
 
@@ -54,8 +57,22 @@ public class HomeFragment extends Fragment {
         );
         time_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         timeSpinner.setAdapter(time_adapter);
-    }
 
+        Button beginButton = view.findViewById(R.id.begin_button);
+
+        DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+
+        beginButton.setOnClickListener(v -> {
+            String selectedOption = areaSpinner.getSelectedItem().toString();
+            boolean isInserted = dbHelper.addTreatment(selectedOption);
+
+            if (isInserted) {
+                Toast.makeText(getContext(), "Kirjaus lisätty onnistuneesti", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Virhe lisättäessä kirjausta", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     public void onDestroyView() {

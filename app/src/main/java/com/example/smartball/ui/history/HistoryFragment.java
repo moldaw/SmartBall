@@ -1,5 +1,6 @@
 package com.example.smartball.ui.history;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,13 +65,20 @@ public class HistoryFragment extends Fragment {
             Button deleteButton = new Button(getContext());
             deleteButton.setText("Poista");
             deleteButton.setOnClickListener(v -> {
-                boolean deleted = dbHelper.deleteTreatment(treatmentId);
-                if (deleted) {
-                    Toast.makeText(getContext(), "Kirjaus poistettu", Toast.LENGTH_SHORT).show();
-                    linearLayout.removeView(treatmentLayout);
-                } else {
-                    Toast.makeText(getContext(), "Poisto epäonnistui", Toast.LENGTH_SHORT).show();
-                }
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Vahvista poisto")
+                        .setMessage("Haluatko varmasti poistaa tämän kirjauksen?")
+                        .setPositiveButton("Kyllä", (dialog, which) -> {
+                            boolean deleted = dbHelper.deleteTreatment(treatmentId);
+                            if (deleted) {
+                                Toast.makeText(getContext(), "Kirjaus poistettu", Toast.LENGTH_SHORT).show();
+                                linearLayout.removeView(treatmentLayout);
+                            } else {
+                                Toast.makeText(getContext(), "Poisto epäonnistui", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Peruuta", (dialog, which) -> dialog.dismiss())
+                        .show();
             });
             treatmentLayout.addView(deleteButton);
             linearLayout.addView(treatmentLayout);

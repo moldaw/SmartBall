@@ -63,8 +63,9 @@ public class HomeFragment extends Fragment {
         DatabaseHelper dbHelper = new DatabaseHelper(getContext());
 
         beginButton.setOnClickListener(v -> {
-            String selectedOption = areaSpinner.getSelectedItem().toString();
-            boolean isInserted = dbHelper.addTreatment(selectedOption);
+            String areaOption = areaSpinner.getSelectedItem().toString();
+            String timeOption = timeSpinner.getSelectedItem().toString();
+            boolean isInserted = dbHelper.addTreatment(areaOption, timeOption);
 
             if (isInserted) {
                 Toast.makeText(getContext(), "Kirjaus lisätty onnistuneesti", Toast.LENGTH_SHORT).show();
